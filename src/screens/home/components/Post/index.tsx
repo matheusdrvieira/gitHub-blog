@@ -1,8 +1,9 @@
 import { PostContainer } from "./style";
 import { Link } from "react-router-dom";
 import { formatDate } from "../../../../utils/dateUltils";
+import { PostProps } from "../../../../interfaces";
 
-export function Post(props: any) {
+export function Post(props: { data: PostProps }) {
 
     return (
         <Link to={`/details/${props.data.number}`}>

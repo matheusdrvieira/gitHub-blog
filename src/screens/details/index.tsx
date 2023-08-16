@@ -5,9 +5,10 @@ import { useEffect, useState } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { GitHubClient } from "../../client/gitHubClient";
 import { formatDate } from "../../utils/dateUltils";
+import { IssueProps } from "../../interfaces";
 
 export function Details() {
-  const [issue, setIssue] = useState({} as any);
+  const [issue, setIssue] = useState({} as IssueProps);
   const { id } = useParams();
   const client = new GitHubClient();
 

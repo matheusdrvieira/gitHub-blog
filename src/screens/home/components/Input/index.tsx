@@ -1,9 +1,12 @@
-import { useContext } from "react";
+import { InputHTMLAttributes } from "react";
 import { InputContainer } from "./style";
-import { Context } from "../../../../contexts";
 
-export function Input(props: any) {
-    const { setSearch } = useContext(Context);
+export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+    quantity: number;
+    setSearch: (value: string) => void;
+}
+
+export function Input(props: InputProps) {
 
     return (
         <InputContainer>
@@ -16,7 +19,7 @@ export function Input(props: any) {
                 id="search"
                 placeholder="Buscar conteúdo"
                 onKeyUp={(event: any) => {
-                    event.target.value.length > 2 ? setTimeout(() => { setSearch(event.target.value) }, 1000) : null
+                    setTimeout(() => { props.setSearch(event.target.value) }, 1000)
                 }}
             />
         </InputContainer>

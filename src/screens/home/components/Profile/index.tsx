@@ -3,9 +3,10 @@ import { ProfileContainer } from "./style";
 import { useEffect, useState } from "react";
 import { GitHubClient } from "../../../../client/gitHubClient";
 import { Link } from "react-router-dom";
+import { ProfileProps } from "../../../../interfaces";
 
 export function Profile() {
-    const [user, setUser] = useState([] as any);
+    const [user, setUser] = useState({} as ProfileProps);
     const client = new GitHubClient();
 
     useEffect(() => {
@@ -14,11 +15,11 @@ export function Profile() {
             setUser(response)
         }
 
-        fetchUserGitHub()
+        fetchUserGitHub();
     }, [])
 
-    const bio = user.bio ? user.bio : "Sem bio."
-    const company = user.company ? user.company : "Não especificado"
+    const bio = user.bio ? user.bio : "Sem bio.";
+    const company = user.company ? user.company : "Não especificado";
     return (
         <ProfileContainer>
             <img src={user.avatar_url} alt="imagem do perfil" />

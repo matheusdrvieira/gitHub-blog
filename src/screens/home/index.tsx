@@ -1,15 +1,15 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Header } from "../../components/Header";
 import { Input } from "./components/Input";
 import { Post } from "./components/Post";
 import { Profile } from "./components/Profile";
 import { Container, Box, Section } from "./style";
-import { Context } from "../../contexts";
 import { GitHubClient } from "../../client/gitHubClient";
+import { PostProps } from "../../interfaces";
 
 export function Home() {
-  const { search } = useContext(Context);
-  const [issues, setIssues] = useState([] as any);
+  const [search, setSearch] = useState("");
+  const [issues, setIssues] = useState<PostProps[]>([]);
   const client = new GitHubClient();
 
   useEffect(() => {
@@ -28,12 +28,12 @@ export function Home() {
       <Header />
       <Box>
         <Profile />
-        <Input quantity={issues.length} />
+        <Input quantity={issues.length} setSearch={setSearch} />
         <Section>
-          {issues.map((issue: any) => {
+          {issues.map((issue: PostProps) => {
             return (
               <Post
-                key={issue.id}
+                key={issue.number}
                 data={issue}
               />
             )

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const AUTH_TOKEN = "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";
+const AUTH_TOKEN = "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";
 const GITHUB_USER = "matheusvieira14"
 const REPOSITORY = "GitHub-Blog"
 const BASE_URL = "https://api.github.com"

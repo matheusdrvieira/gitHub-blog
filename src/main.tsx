@@ -4,15 +4,12 @@ import { ThemeProvider } from 'styled-components';
 import GlobalStyle from "./styles/global"
 import { defaultTheme } from './styles/theme';
 import { Routes } from './routes';
-import { ContextProvider } from './contexts';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <ThemeProvider theme={defaultTheme}>
       <GlobalStyle />
-      <ContextProvider>
-        <Routes />
-      </ContextProvider>
+      <Routes />
     </ThemeProvider>
   </React.StrictMode>,
 )
