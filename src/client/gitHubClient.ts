@@ -1,9 +1,9 @@
 import axios from "axios";
 
-const AUTH_TOKEN = "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";
+const AUTH_TOKEN = ""
+const BASE_URL = "https://api.github.com"
 const GITHUB_USER = "matheusvieira14"
 const REPOSITORY = "GitHub-Blog"
-const BASE_URL = "https://api.github.com"
 
 export class GitHubClient {
     async fetchIssues(search: string) {
