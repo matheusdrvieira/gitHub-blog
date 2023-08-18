@@ -1,15 +1,10 @@
 import axios from "axios";
 
-const AUTH_TOKEN = ""
-const BASE_URL = "https://api.github.com"
-const GITHUB_USER = "matheusvieira14"
-const REPOSITORY = "GitHub-Blog"
-
 export class GitHubClient {
     async fetchIssues(search: string) {
-        const response = await axios.get(`${BASE_URL}/search/issues?q=is:issue+${search}%20repo:${GITHUB_USER}/${REPOSITORY}`, {
+        const response = await axios.get(`${process.env.BASE_URL}/search/issues?q=is:issue+${search}%20repo:${process.env.GITHUB_USER}/${process.env.REPOSITORY}`, {
             headers: {
-                Authorization: `Bearer ${AUTH_TOKEN}`
+                Authorization: `Bearer ${process.env.AUTH_TOKEN}`
             }
         });
 
@@ -17,9 +12,9 @@ export class GitHubClient {
     }
 
     async fetchIssueById(issueNumber: string) {
-        const response = await axios.get(`https://api.github.com/repos/${GITHUB_USER}/${REPOSITORY}/issues/${issueNumber}`, {
+        const response = await axios.get(`https://api.github.com/repos/${process.env.GITHUB_USER}/${process.env.REPOSITORY}/issues/${issueNumber}`, {
             headers: {
-                Authorization: `Bearer ${AUTH_TOKEN}`
+                Authorization: `Bearer ${process.env.AUTH_TOKEN}`
             }
         })
 
@@ -27,9 +22,9 @@ export class GitHubClient {
     }
 
     async fetchGitHubUser() {
-        const response = await axios.get(`https://api.github.com/users/${GITHUB_USER}`, {
+        const response = await axios.get(`https://api.github.com/users/${process.env.GITHUB_USER}`, {
             headers: {
-                Authorization: `Bearer ${AUTH_TOKEN}`
+                Authorization: `Bearer ${process.env.AUTH_TOKEN}`
             }
         })
         return response.data
